@@ -1,8 +1,20 @@
 import { test, expect } from '@playwright/test';
 import { getValidRefreshToken } from './utils/tokenManager.js';
 
-const tradingPairs = ['1000BONK_USD'];
-const directions = ['Short'];
+const tradingPairs = [
+  '1000SHIBUSD', 'AAVEUSD', 'ADAUSD', 'AEROUSD', 'AI16ZUSD', 'ALGOUSD', 'ARBUSD', 'ATOMUSD',
+  'AXSUSD', 'BCHUSD', 'BERAUSD', 'BGBUSD', 'BRETTUSD', 'BSVUSD', 'CAKEUSD', 'CHZUSD',
+  'CROUSD', 'CRVUSD', 'DASHUSD', 'DEEPUSD', 'DEXEUSD', 'DOTUSD', 'EIGENUSD', 'ENAUSD',
+  'ENSUSD', 'ETCUSD', 'FARTCOINUSD', 'FETUSD', 'FILUSD', 'FLOKIUSD', 'FLOWUSD', 'GALAUSD',
+  'GRASSUSD', 'GRTUSD', 'HBARUSD', 'ICPUSD', 'IMXUSD', 'INJUSD', 'IOTAUSD', 'IPUSD',
+  'JASMYUSD', 'JTOUSD', 'JUPUSD', 'KAIAUSD', 'KASUSD', 'LDOUSD', 'MANAUSD', 'MKRUSD',
+  'MNTUSD', 'MOVEUSD', 'NEARUSD', 'OPUSD', 'PENDLEUSD', 'POLUSD', 'POPCATUSD', 'PYTHUSD',
+  'RAYUSD', 'RENDERUSD', 'RUNEUSD', 'SUSD', 'SANDUSD', 'SEIUSD', 'STRKUSD', 'TAOUSD',
+  'TIAUSD', 'TURBOUSD', 'UNIUSD', 'VETUSD', 'VIRTUALUSD', 'WALUSD', 'XLMUSD', 'XMRUSD',
+  'XTZUSD', 'ZECUSD'
+];
+
+const directions = ['Long'];
 
 test.describe('🚀 Тесты открытия и закрытия позиций (по всем парам)', () => {
   for (const pair of tradingPairs) {
@@ -46,7 +58,6 @@ test.describe('🚀 Тесты открытия и закрытия позици
 
         const closeModal = page.locator('section.chakra-modal__content', { hasText: 'Position info' });
 
-        // ✅ Получаем значение маржи ДО Add margin
         const valueBeforeLocator = closeModal
           .locator('p.chakra-text.css-14es400', { hasText: 'Margin' })
           .locator('..')
@@ -58,7 +69,6 @@ test.describe('🚀 Тесты открытия и закрытия позици
         const valueBefore = parseFloat(valueBeforeText.replace(/[^\d.]/g, ''));
         console.log(`🪜 📌 Значение ДО Add margin: ${valueBefore}`);
 
-        // Add margin
         const addBtn = page.locator('button.chakra-button.css-1nv6kk2', { hasText: 'Add' });
         await addBtn.click();
 
@@ -81,7 +91,6 @@ test.describe('🚀 Тесты открытия и закрытия позици
         const marginAfterAdd = parseFloat(marginAfterAddText.replace(/[^\d.]/g, ''));
         console.log(`🪜 ✅ Значение маржи после Add margin: ${marginAfterAdd}`);
 
-        // Remove margin
         const removeBtn = closeModal.locator('button:has-text("Remove")');
         await removeBtn.click();
 
