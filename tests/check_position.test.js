@@ -1,7 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { getValidRefreshToken } from './utils/tokenManager.js';
 
-const tradingPairs = ['1000BONK_USD'];
+const tradingPairs = [
+  '1000SHIBUSD', 'AAVEUSD', 'ADAUSD', 'AEROUSD', 'AI16ZUSD', 'ALGOUSD', 'ARBUSD', 'ATOMUSD',
+  'AXSUSD', 'BCHUSD', 'BERAUSD', 'BGBUSD', 'BRETTUSD', 'BSVUSD', 'CAKEUSD', 'CHZUSD',
+  'CROUSD', 'CRVUSD', 'DASHUSD', 'DEEPUSD', 'DEXEUSD', 'DOTUSD', 'EIGENUSD', 'ENAUSD',
+  'ENSUSD', 'ETCUSD', 'FARTCOINUSD', 'FETUSD', 'FILUSD', 'FLOKIUSD', 'FLOWUSD', 'GALAUSD',
+  'GRASSUSD', 'HBARUSD', 'ICPUSD', 'IMXUSD', 'INJUSD', 'IOTAUSD', 'IPUSD',
+  'JASMYUSD', 'JUPUSD', 'KAIAUSD', 'KASUSD', 'LDOUSD', 'MANAUSD', 'MKRUSD',
+  'MNTUSD', 'MOVRUSD', 'NEARUSD', 'OPUSD', 'PENDLEUSD', 'POLUSD', 'POPCATUSD', 'PYTHUSD',
+  'RENDERUSD', 'RLBUSD', 'RNDRUSD', 'SANDUSD', 'SEIUSD', 'STRKUSD', 'TAOUSD',
+  'TIAUSD', 'TURBOUSD', 'UNISWAPUSD', 'VETUSD', 'VIRTUALUSD', 'WALUSD', 'XLMUSD', 'XMRUSD',
+  'XTZUSD', 'ZECUSD'
+];
 const directions = ['Short'];
 
 test.describe('🚀 Тесты открытия и закрытия позиций (по всем парам)', () => {
