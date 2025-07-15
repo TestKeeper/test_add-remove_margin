@@ -2,20 +2,27 @@ import { test, expect } from '@playwright/test';
 import { getValidRefreshToken } from './utils/tokenManager.js';
 
 const tradingPairs = [
-  '1000SHIBUSD', 'AAVEUSD', 'ADAUSD', 'AEROUSD', 'AI16ZUSD', 'ALGOUSD', 'ARBUSD', 'ATOMUSD',
-  'AXSUSD', 'BCHUSD', 'BERAUSD', 'BGBUSD', 'BRETTUSD', 'BSVUSD', 'CAKEUSD', 'CHZUSD',
-  'CROUSD', 'CRVUSD', 'DASHUSD', 'DEEPUSD', 'DEXEUSD', 'DOTUSD', 'EIGENUSD', 'ENAUSD',
-  'ENSUSD', 'ETCUSD', 'FARTCOINUSD', 'FETUSD', 'FILUSD', 'FLOKIUSD', 'FLOWUSD', 'GALAUSD',
-  'GRASSUSD', 'HBARUSD', 'ICPUSD', 'IMXUSD', 'INJUSD', 'IOTAUSD', 'IPUSD',
-  'JASMYUSD', 'JUPUSD', 'KAIAUSD', 'KASUSD', 'LDOUSD', 'MANAUSD', 'MKRUSD',
-  'MNTUSD', 'MOVRUSD', 'NEARUSD', 'OPUSD', 'PENDLEUSD', 'POLUSD', 'POPCATUSD', 'PYTHUSD',
-  'RENDERUSD', 'RLBUSD', 'RNDRUSD', 'SANDUSD', 'SEIUSD', 'STRKUSD', 'TAOUSD',
-  'TIAUSD', 'TURBOUSD', 'UNISWAPUSD', 'VETUSD', 'VIRTUALUSD', 'WALUSD', 'XLMUSD', 'XMRUSD',
-  'XTZUSD', 'ZECUSD'
+  'BTC_USD', 'ETH_USD', 'KAITO_USD', 'TON_USD', 'TRUMP_USD', 'XRP_USD', '1000BONK_USD',
+  '1000PEPE_USD', '1000SHIB_USD', 'AAVE_USD', 'ADA_USD', 'AERO_USD', 'AI16Z_USD',
+  'ALGO_USD', 'APT_USD', 'ARB_USD', 'ATOM_USD', 'AVAX_USD', 'AXS_USD', 'BCH_USD',
+  'BERA_USD', 'BGB_USD', 'BNB_USD', 'BRETT_USD', 'BSV_USD', 'CAKE_USD', 'CHZ_USD',
+  'CRO_USD', 'CRV_USD', 'DASH_USD', 'DEEP_USD', 'DEXE_USD', 'DOGE_USD', 'DOT_USD',
+  'DYDX_USD', 'EIGEN_USD', 'ENA_USD', 'ENS_USD', 'ETC_USD', 'FARTCOIN_USD', 'FET_USD',
+  'FIL_USD', 'FLOKI_USD', 'FLOW_USD', 'GALA_USD', 'GRASS_USD', 'GRT_USD', 'HBAR_USD',
+  'ICP_USD', 'IMX_USD', 'INJ_USD', 'IOTA_USD', 'IP_USD', 'JASMY_USD', 'JTO_USD',
+  'JUP_USD', 'KAIA_USD', 'KAS_USD', 'LDO_USD', 'LINK_USD', 'LTC_USD', 'MANA_USD',
+  'MKR_USD', 'MNT_USD', 'MOVE_USD', 'NEAR_USD', 'ONDO_USD', 'OP_USD', 'ORDI_USD',
+  'PENDLE_USD', 'PENGU_USD', 'PNUT_USD', 'POL_USD', 'POPCAT_USD', 'PYTH_USD',
+  'RAY_USD', 'RENDER_USD', 'RUNE_USD', 'S_USD', 'SAND_USD', 'SEI_USD', 'SOL_USD',
+  'STRK_USD', 'SUI_USD', 'TAO_USD', 'TIA_USD', 'TRX_USD', 'TURBO_USD', 'UNI_USD',
+  'VET_USD', 'VIRTUAL_USD', 'WAL_USD', 'WIF_USD', 'WLD_USD', 'XLM_USD', 'XMR_USD',
+  'XTZ_USD', 'ZEC_USD', 'ZRO_USD'
 ];
+
+
 const directions = ['Short'];
 
-test.describe('🚀 Тесты открытия и закрытия позиций (по всем парам)', () => {
+test.describe('🚀 Проверка add/remove  margin (по всем парам)', () => {
   for (const pair of tradingPairs) {
     for (const direction of directions) {
       test(`🔁 ${pair}: ${direction} позиция: открыть и закрыть`, async ({ page }) => {
