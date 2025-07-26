@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { getValidRefreshToken } from './utils/tokenManager.js';
 
 
-const tradingPairs = ['ETH_USD'];
+const tradingPairs = ['TRUMP_USD'];
 const directions = ['Short', 'Long'];
 
 
