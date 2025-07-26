@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { getValidRefreshToken } from './utils/tokenManager.js';
 
-const tradingPairs = [
-  'WLD_USD'
-];
 
+const tradingPairs = ['ETH_USD'];
 const directions = ['Short', 'Long'];
 
 
